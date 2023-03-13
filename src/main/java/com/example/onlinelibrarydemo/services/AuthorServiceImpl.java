@@ -4,8 +4,11 @@ import com.example.onlinelibrarydemo.entities.Author;
 import com.example.onlinelibrarydemo.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorServiceImpl implements AuthorService{
@@ -18,7 +21,14 @@ public class AuthorServiceImpl implements AuthorService{
     }
 
     @Override
+    @Transactional (readOnly = true)
     public List<Author> getAllAuthors() {
         return authorRepository.findAll();
+    }
+
+    @Override
+    @Transactional (readOnly = true)
+    public Optional<Author> getAuthorById(long id) {
+        return authorRepository.findById(id);
     }
 }
