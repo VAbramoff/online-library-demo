@@ -10,4 +10,9 @@ public interface AuthorService {
     List<Author> getAllAuthors();
 
     Optional<Author> getAuthorById(long id);
+    void updateAuthor (Author author);
+
+    void deleteAuthor (Author author);
+
+    Author createAuthor(Author author);
 }

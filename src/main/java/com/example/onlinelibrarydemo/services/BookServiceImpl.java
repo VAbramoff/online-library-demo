@@ -30,4 +30,22 @@ public class BookServiceImpl implements BookService {
     public Optional<Book> getBookById(long id) {
         return bookRepository.findById(id);
     }
+
+    @Override
+    @Transactional
+    public void updateBook(Book book) {
+        bookRepository.save(book);
+    }
+
+    @Override
+    @Transactional
+    public void deleteBook(Book book) {
+        bookRepository.delete(book);
+    }
+
+    @Override
+    @Transactional
+    public Book createBook(Book book) {
+        return bookRepository.save(book);
+    }
 }
